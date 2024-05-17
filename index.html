@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>공학용 계산기</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .calculator {
+            max-width: 300px;
+            background-color: #f5f5f5;
+            border-radius: 5px;
+            padding: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        #result {
+            text-align: right;
+            font-size: 24px;
+            padding: 10px;
+            margin-bottom: 10px;
+            background-color: #ffffff;
+            border: none;
+            border-radius: 5px;
+        }
+
+        .btn-calculator {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="calculator mx-auto">
+            <h1 class="text-center mb-4">공학용 계산기</h1>
+            <input type="text" id="result" readonly>
+            <div class="row">
+                <div class="col-4">
+                    <button class="btn btn-primary btn-block btn-calculator" onclick="appendInput('7')">7</button>
+                </div>
+                <div class="col-4">
+                    <button class="btn btn-primary btn-block btn-calculator" onclick="appendInput('8')">8</button>
+                </div>
+                <div class="col-4">
+                    <button class="btn btn-primary btn-block btn-calculator" onclick="appendInput('9')">9</button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-4">
+                    <button class="btn btn-primary btn-block btn-calculator" onclick="appendInput('4')">4</button>
+                </div>
+                <div class="col-4">
+                    <button class="btn btn-primary btn-block btn-calculator" onclick="appendInput('5')">5</button>
+                </div>
+                <div class="col-4">
+                    <button class="btn btn-primary btn-block btn-calculator" onclick="appendInput('6')">6</button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-4">
+                    <button class="btn btn-primary btn-block btn-calculator" onclick="appendInput('1')">1</button>
+                </div>
+                <div class="col-4">
+                    <button class="btn btn-primary btn-block btn-calculator" onclick="appendInput('2')">2</button>
+                </div>
+                <div class="col-4">
+                    <button class="btn btn-primary btn-block btn-calculator" onclick="appendInput('3')">3</button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-4">
+                    <button class="btn btn-primary btn-block btn-calculator" onclick="appendInput('0')">0</button>
+                </div>
+                <div class="col-4">
+                    <button class="btn btn-primary btn-block btn-calculator" onclick="appendInput('.')">.</button>
+                </div>
+                <div class="col-4">
+                    <button class="btn btn-primary btn-block btn-calculator" onclick="calculate()">=</button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-3">
+                    <button class="btn btn-primary btn-block btn-calculator" onclick="appendInput('(')">(</button>
+                </div>
+                <div class="col-3">
+                    <button class="btn btn-primary btn-block btn-calculator" onclick="appendInput(')')">)</button>
+                </div>
+                <div class="col-3">
+                    <button class="btn btn-primary btn-block btn-calculator" onclick="appendInput('/')">/</button>
+                </div>
+                <div class="col-3">
+                    <button class="btn btn-primary btn-block btn-calculator" onclick="appendInput('*')">*</button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-3">
+                    <button class="btn btn-primary btn-block btn-calculator" onclick="appendInput('-')">-</button>
+                </div>
+                <div class="col-3">
+                    <button class="btn btn-primary btn-block btn-calculator" onclick="appendInput('+')">+</button>
+                </div>
+                <div class="col-3">
+                    <button class="btn btn-danger btn-block btn-calculator" onclick="backspace()">&larr;</button>
+                </div>
+                <div class="col-3">
+                    <button class="btn btn-danger btn-block btn-calculator" onclick="clearInput()">C</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function appendInput(value) {
+            const result = document.getElementById("result");
+            result.value += value;
+        }
+
+        function clearInput() {
+            const result = document.getElementById("result");
+            result.value = "";
+        }
+
+        function calculate() {
+            const result = document.getElementById("result");
+            try {
+                result.value = eval(result.value);
+            } catch (error) {
+                result.value = "Error";
+            }
+        }
+
+        function backspace() {
+            const result = document.getElementById("result");
+            result.value = result.value.slice(0, -1);
+        }
+    </script>
+</body>
+</html>
